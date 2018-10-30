@@ -1,0 +1,26 @@
+{
+  "name": "match4action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "development": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Estúdio VaiNaWeb",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mysql2": "^1.5.3",
+    "nodemon": "^1.18.5",
+    "sequelize": "^4.37.10"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.12.0",
+    "sequelize-cli": "^4.0.0"
+  }
+}
