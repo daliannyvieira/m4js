@@ -1,26 +1,28 @@
+`use strict`;
+
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
+const orm = require('sequelize');
 const config = require('../config/database.js');
 
-const db = {};
-const sequelize = new Sequelize(config);
+const Repository = {};
+const sql = new orm(config);
 
 fs
   .readdirSync(__dirname)
   .filter(file => (file.indexOf('.') !== 0) && (file !== path.basename(__filename)) && (file.slice(-3) === '.js'))
   .forEach((file) => {
-    const model = sequelize.import(path.join(__dirname, file));
-    db[model.name] = model;
+    const model = sql.import(path.join(__dirname, file));
+    Repository[model.name] = model;
   });
 
-Object.keys(db).forEach((modelName) => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
+Object.keys(Repository).forEach((modelName) => {
+  if (Repository[modelName].associate) {
+    Repository[modelName].associate(Repository);
   }
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
+Repository.sql = sql;
+Repository.orm = orm;
 
-module.exports = db;
+module.exports = Repository;

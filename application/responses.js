@@ -1,31 +1,13 @@
 const JsonResponse = {
-  formatUserData: (user, method) => {
-    if (method === 'post') {
-      return {
-        type: `User`,
-        id: user.id,
-        attributes: {
-          name: user.name,
-          message: `O usuário ${user.name} foi criado com sucesso.`
-        }
-      };
-    }
+  formatUserData: (user) => {
     return {
       type: `User`,
       id: user.id,
       attributes: {
         name: user.name,
-        message: `Sucesso`
+        email: user.email
       }
     };
-  },
-  formatAuthorization: (token) => {
-    return {
-      type: `Authorization`,
-      attributes: {
-        token: token.jwt
-      }
-    }
   }
 };
 

@@ -1,8 +1,10 @@
 'use strict';
 
 const express = require('express');
+const config = require('./config/database.js');
+const UserService = require('./application/user-service');
 const bodyParser = require('body-parser');
-const UserService = require('./application/users-service');
+
 const port = 3000
 
 class Server {
@@ -46,3 +48,4 @@ const api = new Server();
 
 api.setup();
 api.start();
+

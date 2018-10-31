@@ -15,7 +15,7 @@ module.exports = class Users {
   createUser() {
     this.router.post('/users', async (req, res) => {
       const user = await User.create(req.body);
-      res.json(JsonResponse.formatUserData(user, 'post'));
+      res.json(JsonResponse.formatUserData(user));
     });
   }
 
@@ -24,7 +24,7 @@ module.exports = class Users {
       const users = await User.findAll();
       const lista = []
       users.map((user) => {
-        lista.push(JsonResponse.formatUserData(user, 'get'))
+        lista.push(JsonResponse.formatUserData(user))
       })
       res.json(lista);
     });
