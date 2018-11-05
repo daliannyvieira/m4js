@@ -2,6 +2,7 @@
 
 const express = require('express');
 const config = require('./config/database.js');
+const StatusService = require('./application/status-service');
 const UserService = require('./application/user-service');
 const bodyParser = require('body-parser');
 
@@ -26,6 +27,7 @@ class Server {
   }
 
   start () {
+    new StatusService(this.router).expose();
     new UserService(this.router).expose();
 
     this.router.get('/', (req, res) => {
@@ -48,4 +50,3 @@ const api = new Server();
 
 api.setup();
 api.start();
-
